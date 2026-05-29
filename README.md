@@ -1,12 +1,11 @@
-# Hospital Network Infrastructure Design - Saudi German Hospital
+# Hospital Network Infrastructure Design - Saudi German Hospital Concept
 
-I built this entirely on my own. No group, no partner, just me, Cisco Packet 
-Tracer, and a lot of time figuring things out. The brief was to design a 
-network for a real hospital — Saudi German Hospital — from scratch. Not a 
-simple flat network either. Three physically separate branches, dozens of 
-departments, security controls, attack simulations, VoIP, email servers, 
-VPN tunnels, and a full IP addressing scheme. The kind of infrastructure 
-that an actual hospital would need to run.
+I built this utilizing Cisco Packet Tracer, and a lot of time figuring
+things out. The brief was to design a network for a real hospital, 
+Saudi German Hospital Concept, from scratch. Not a simple flat network
+Three physically separate branches, dozens of departments, security controls,
+attack simulations, VoIP, email servers, VPN tunnels, and a full IP addressing scheme.
+The kind of infrastructure that an actual hospital would need to run.
 
 This project is what made networking click for me. You can read about VLANs 
 and OSPF all you want but when you are sitting there at 2am trying to figure 
@@ -22,7 +21,7 @@ departments and its own network requirements. Every branch needed to be
 isolated enough for security but connected enough for the hospital to 
 function as one organisation.
 
-**Patient Care Branch** — the clinical heart of the hospital. Six departments:
+**Patient Care Branch**: the clinical heart of the hospital. Six departments:
 - Reception
 - Guest Waiting Area
 - Critical Care
@@ -30,14 +29,14 @@ function as one organisation.
 - Maternity Ward
 - Pharmacy
 
-**Operational Hub Branch** — the business engine running behind the scenes:
+**Operational Hub Branch**: the business engine running behind the scenes:
 - Administration
 - IT
 - HR
 - Finances
 - Call Centre
 
-**Call Centre Branch** — a dedicated communications branch cloned directly 
+**Call Centre Branch**: a dedicated communications branch cloned directly 
 from the Operational Hub's Call Centre department to increase speed and 
 redundancy in emergency communications. Directly connected to its counterpart 
 in the Operational Hub for instant inter-branch communication.
@@ -86,7 +85,7 @@ summary addresses, keeping the access control rules clean and manageable.
 **VLANs and SVIs**
 Every department got its own VLAN, completely isolating their traffic at 
 Layer 2. Switched Virtual Interfaces on the multi-layer switches then allowed 
-controlled inter-VLAN routing — departments that needed to talk to each other 
+controlled inter-VLAN routing, departments that needed to talk to each other 
 could, and those that should not were blocked at the ACL level.
 
 **OSPF Dynamic Routing**
@@ -145,7 +144,7 @@ carry voice VLAN traffic separately from data traffic.
 **SSH Remote Access**
 All routers and multi-layer switches were configured with SSH for secure 
 remote management. RSA keys were generated at 1024 bits, a local username 
-and password was set, and VTY lines were restricted to SSH only — Telnet 
+and password was set, and VTY lines were restricted to SSH only, Telnet 
 disabled entirely.
 
 **Switch Port Security**
@@ -170,7 +169,7 @@ router silently drops every packet leaving that subnet.
 
 ![ACL Denying the Packets](screenshots/dos_proof_denial.png)
 
-After multiple test runs, 156 packet matches were recorded — all denied. 
+After multiple test runs, 156 packet matches were recorded, all denied. 
 The guest network is completely isolated from every other department with 
 zero exceptions.
 
@@ -255,15 +254,14 @@ took several attempts. Once it clicked it felt like a genuine breakthrough.
 
 The Switch Port Security attack scenario was the most satisfying moment of 
 the project. Watching a port immediately shut down the second an unauthorised 
-MAC address appeared — something I had configured myself from scratch — made 
+MAC address appeared, something I had configured myself from scratch, made 
 the whole thing feel real rather than academic.
 
-Building something this size completely solo also taught me how important 
+Building something this size also taught me how important 
 documentation is when you are managing dozens of devices. The IP scheme 
 tables and configuration notes I kept throughout the project were the only 
 thing standing between me and complete chaos.
 
 ---
 
-*Module: KH5037CMD Foundation of Networking | Coventry University*
 *Tool: Cisco Packet Tracer*
